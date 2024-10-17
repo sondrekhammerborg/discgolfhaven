@@ -8,7 +8,6 @@ const ProductItem = ({ product }: { product: Product }) => {
   const { toast } = useToast();
 
   const handleAddToCart = () => {
-    // In a real app, this would add the item to the cart
     toast({
       title: "Added to cart",
       description: `${product.name} has been added to your cart.`,
