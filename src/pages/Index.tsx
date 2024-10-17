@@ -16,7 +16,8 @@ const Index = () => {
     if (category && category !== 'all') {
       setFilteredProducts(products.filter(product => product.category === category));
     } else {
-      setFilteredProducts(products);
+      // On the homepage, show only the first three products
+      setFilteredProducts(products.slice(0, 3));
     }
   }, [location]);
 
