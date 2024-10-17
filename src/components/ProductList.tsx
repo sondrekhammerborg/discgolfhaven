@@ -1,8 +1,12 @@
 import React from 'react';
 import ProductItem from './ProductItem';
-import { products } from '../data/products';
+import { Product } from '../data/products';
 
-const ProductList = () => {
+interface ProductListProps {
+  products: Product[];
+}
+
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {products.map((product) => (
