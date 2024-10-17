@@ -1,18 +1,14 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useToast } from '../hooks/use-toast';
-
-const products = [
-  { id: 1, name: 'Driver Disc', price: 14.99, image: 'https://placehold.co/200x200?text=Driver', description: 'A high-speed disc for maximum distance.' },
-  { id: 2, name: 'Mid-Range Disc', price: 12.99, image: 'https://placehold.co/200x200?text=Mid-Range', description: 'Versatile disc for approach shots and short drives.' },
-  { id: 3, name: 'Putter Disc', price: 9.99, image: 'https://placehold.co/200x200?text=Putter', description: 'Designed for accurate putting and approach shots.' },
-];
+import { products } from '../data/products';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const product = products.find(p => p.id === parseInt(id || '0'));
 
@@ -35,13 +31,14 @@ const ProductDetail = () => {
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="md:flex">
             <div className="md:flex-shrink-0">
-              <img className="h-48 w-full object-cover md:w-48" src={product.image} alt={product.name} />
+              <img className="h-48 w-full object-cover md:w-48 mx-auto" src={product.image} alt={product.name} />
             </div>
             <div className="p-8">
               <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{product.name}</div>
               <p className="mt-2 text-gray-500">{product.description}</p>
               <p className="mt-2 text-gray-900">${product.price.toFixed(2)}</p>
               <Button onClick={handleAddToCart} className="mt-4">Add to Cart</Button>
+              <Button onClick={() => navigate('/')} variant="outline" className="mt-4 ml-4">Back to Products</Button>
             </div>
           </div>
         </div>

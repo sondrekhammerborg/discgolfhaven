@@ -1,11 +1,6 @@
 import React from 'react';
 import ProductItem from './ProductItem';
-
-const products = [
-  { id: 1, name: 'Driver Disc', price: 14.99, image: 'https://example.com/driver.jpg' },
-  { id: 2, name: 'Mid-Range Disc', price: 12.99, image: 'https://example.com/midrange.jpg' },
-  { id: 3, name: 'Putter Disc', price: 9.99, image: 'https://example.com/putter.jpg' },
-];
+import { products } from '../data/products';
 
 const ProductList = () => {
   return (

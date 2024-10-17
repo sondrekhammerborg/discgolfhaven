@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const Cart = () => {
   const navigate = useNavigate();
   // In a real app, you'd manage cart state here
-  const cartItemsCount = 0;
+  const cartItemsCount = 3; // Dummy count for demonstration
 
   const handleCheckout = () => {
     navigate('/checkout');
