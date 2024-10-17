@@ -1,6 +1,8 @@
 import React from 'react';
-import { ShoppingCart, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Button } from './ui/button';
+import Cart from './Cart';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -10,17 +12,15 @@ const Header = () => {
           <Button variant="ghost" size="icon" className="mr-2 lg:hidden" aria-label="Menu">
             <Menu className="h-6 w-6" />
           </Button>
-          <h1 className="text-xl font-bold text-gray-800">Disc Golf Haven</h1>
+          <Link to="/" className="text-xl font-bold text-gray-800">Disc Golf Haven</Link>
         </div>
         <nav className="hidden lg:flex space-x-4">
-          <a href="/" className="text-gray-600 hover:text-gray-800">Home</a>
-          <a href="/products" className="text-gray-600 hover:text-gray-800">Products</a>
-          <a href="/about" className="text-gray-600 hover:text-gray-800">About</a>
-          <a href="/contact" className="text-gray-600 hover:text-gray-800">Contact</a>
+          <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+          <Link to="/products" className="text-gray-600 hover:text-gray-800">Products</Link>
+          <Link to="/about" className="text-gray-600 hover:text-gray-800">About</Link>
+          <Link to="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
         </nav>
-        <Button variant="ghost" size="icon" aria-label="Shopping Cart">
-          <ShoppingCart className="h-6 w-6" />
-        </Button>
+        <Cart />
       </div>
     </header>
   );

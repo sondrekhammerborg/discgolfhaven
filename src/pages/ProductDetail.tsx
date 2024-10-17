@@ -1,0 +1,54 @@
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Button } from '../components/ui/button';
+import { useToast } from '../hooks/use-toast';
+
+const products = [
+  { id: 1, name: 'Driver Disc', price: 14.99, image: 'https://placehold.co/200x200?text=Driver', description: 'A high-speed disc for maximum distance.' },
+  { id: 2, name: 'Mid-Range Disc', price: 12.99, image: 'https://placehold.co/200x200?text=Mid-Range', description: 'Versatile disc for approach shots and short drives.' },
+  { id: 3, name: 'Putter Disc', price: 9.99, image: 'https://placehold.co/200x200?text=Putter', description: 'Designed for accurate putting and approach shots.' },
+];
+
+const ProductDetail = () => {
+  const { id } = useParams<{ id: string }>();
+  const { toast } = useToast();
+  const product = products.find(p => p.id === parseInt(id || '0'));
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
+  const handleAddToCart = () => {
+    // In a real app, this would add the item to the cart
+    toast({
+      title: "Added to cart",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header />
+      <main className="flex-grow container mx-auto px-4 py-8">
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="md:flex">
+            <div className="md:flex-shrink-0">
+              <img className="h-48 w-full object-cover md:w-48" src={product.image} alt={product.name} />
+            </div>
+            <div className="p-8">
+              <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{product.name}</div>
+              <p className="mt-2 text-gray-500">{product.description}</p>
+              <p className="mt-2 text-gray-900">${product.price.toFixed(2)}</p>
+              <Button onClick={handleAddToCart} className="mt-4">Add to Cart</Button>
+            </div>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default ProductDetail;
