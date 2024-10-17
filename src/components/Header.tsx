@@ -20,11 +20,11 @@ const Header = () => {
           </Button>
           <Link to="/" className="text-xl font-bold text-gray-800">Disc Golf Haven</Link>
         </div>
-        <nav className="hidden lg:flex space-x-4">
+        <nav className="hidden lg:flex items-center space-x-4">
           <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="flex items-center">
+              <Button variant="ghost" className="flex items-center text-gray-600 hover:text-gray-800 p-0 h-auto font-normal">
                 Products <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
