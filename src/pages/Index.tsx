@@ -15,6 +15,9 @@ const Index = () => {
 
     if (category && category !== 'all') {
       setFilteredProducts(products.filter(product => product.category === category));
+    } else if (category === 'all') {
+      // Show all products when 'all' category is selected
+      setFilteredProducts(products);
     } else {
       // On the homepage, show only the first three products
       setFilteredProducts(products.slice(0, 3));
