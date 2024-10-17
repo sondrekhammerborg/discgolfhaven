@@ -70,8 +70,51 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Additional custom styles */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Improve focus styles for better accessibility */
+:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Ensure proper contrast for text */
+.text-gray-600 {
+  color: #4B5563;
+}
+
+.text-gray-800 {
+  color: #1F2937;
+}
+
+/* Improve link hover states */
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive font sizes */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
   }
 }
