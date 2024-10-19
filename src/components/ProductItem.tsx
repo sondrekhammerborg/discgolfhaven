@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Product } from '../data/products';
 import { useToast } from '../hooks/use-toast';
+import { useCart } from '../contexts/CartContext';
 
 const ProductItem = ({ product }: { product: Product }) => {
   const { toast } = useToast();
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
+    addToCart(product);
     toast({
       title: "Added to cart",
       description: `${product.name} has been added to your cart.`,

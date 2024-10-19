@@ -2,11 +2,13 @@ import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../contexts/CartContext';
 
 const Cart = () => {
   const navigate = useNavigate();
-  // In a real app, you'd manage cart state here
-  const cartItemsCount = 3; // Dummy count for demonstration
+  const { cart } = useCart();
+
+  const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const handleCheckout = () => {
     navigate('/checkout');
