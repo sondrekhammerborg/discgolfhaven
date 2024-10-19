@@ -4,12 +4,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useToast } from '../hooks/use-toast';
+import { useCart } from '../contexts/CartContext';
 import { products } from '../data/products';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { addToCart } = useCart();
   const product = products.find(p => p.id === parseInt(id || '0'));
 
   if (!product) {
@@ -17,7 +19,7 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    // In a real app, this would add the item to the cart
+    addToCart(product);
     toast({
       title: "Added to cart",
       description: `${product.name} has been added to your cart.`,

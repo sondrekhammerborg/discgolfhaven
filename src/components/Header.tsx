@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import Cart from './Cart';
@@ -11,17 +11,23 @@ import {
 } from "./ui/dropdown-menu";
 
 const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <Button variant="ghost" size="icon" className="mr-2 lg:hidden" aria-label="Menu">
+          <Button variant="ghost" size="icon" className="mr-2 lg:hidden" aria-label="Menu" onClick={toggleMobileMenu}>
             <Menu className="h-6 w-6" />
           </Button>
           <Link to="/" className="text-xl font-bold text-gray-800">Disc Golf Haven</Link>
         </div>
-        <nav className="hidden lg:flex items-center space-x-4">
-          <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+        <nav className={`${mobileMenuOpen ? 'block' : 'hidden'} lg:flex items-center space-y-4 lg:space-y-0 lg:space-x-4 absolute lg:relative top-full left-0 right-0 bg-white lg:bg-transparent shadow-md lg:shadow-none p-4 lg:p-0 z-50`}>
+          <Link to="/" className="block lg:inline-block text-gray-600 hover:text-gray-800">Home</Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="flex items-center text-gray-600 hover:text-gray-800 p-0 h-auto font-normal">
@@ -49,8 +55,8 @@ const Header = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Link to="/about" className="text-gray-600 hover:text-gray-800">About</Link>
-          <Link to="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
+          <Link to="/about" className="block lg:inline-block text-gray-600 hover:text-gray-800">About</Link>
+          <Link to="/contact" className="block lg:inline-block text-gray-600 hover:text-gray-800">Contact</Link>
         </nav>
         <Cart />
       </div>
