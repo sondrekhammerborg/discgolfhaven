@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';
+import { CartItem } from '../hooks/useCart';
 
 interface HeaderProps {
   toggleCart: () => void;
+  cart: CartItem[];
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleCart }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { cart } = useCart();
+const Header: React.FC<HeaderProps> = ({ toggleCart, cart }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);

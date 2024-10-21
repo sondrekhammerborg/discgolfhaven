@@ -7,11 +7,13 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import { useState } from "react";
+import { useCart } from "./hooks/useCart";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { cart, addToCart, removeFromCart, updateQuantity, clearCart } = useCart();
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -23,12 +25,19 @@ const App = () => {
         <Toaster />
         <BrowserRouter>
           <div className="flex flex-col min-h-screen">
-            <Header toggleCart={toggleCart} />
+            <Header toggleCart={toggleCart} cart={cart} />
             <main className="flex-grow container mx-auto px-4 py-8">
               <Routes>
-                <Route path="/" element={<Index />} />
+                <Route path="/" element={<Index addToCart={addToCart} />} />
               </Routes>
-              {isCartOpen && <Cart />}
+              {isCartOpen && (
+                <Cart
+                  cart={cart}
+                  removeFromCart={removeFromCart}
+                  updateQuantity={updateQuantity}
+                  clearCart={clearCart}
+                />
+              )}
             </main>
             <Footer />
           </div>

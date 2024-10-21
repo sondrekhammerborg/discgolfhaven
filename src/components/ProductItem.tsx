@@ -1,17 +1,13 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { useCart } from '../hooks/useCart';
+import { Product } from '../hooks/useCart';
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
+interface ProductItemProps {
+  product: Product;
+  addToCart: (product: Product) => void;
 }
 
-const ProductItem = ({ product }: { product: Product }) => {
-  const { addToCart } = useCart();
-
+const ProductItem: React.FC<ProductItemProps> = ({ product, addToCart }) => {
   const handleAddToCart = () => {
     addToCart(product);
   };
