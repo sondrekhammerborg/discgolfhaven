@@ -1,11 +1,16 @@
 import React from 'react';
-import { useCart } from '../hooks/useCart';
+import { CartItem } from '../hooks/useCart';
 import { Button } from './ui/button';
 import { X } from 'lucide-react';
 
-const Cart = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+interface CartProps {
+  cart: CartItem[];
+  removeFromCart: (productId: number) => void;
+  updateQuantity: (productId: number, quantity: number) => void;
+  clearCart: () => void;
+}
 
+const Cart: React.FC<CartProps> = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
@@ -53,6 +58,7 @@ const Cart = () => {
           ))}
           <div className="mt-6">
             <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>
+            <Button className="w-full mt-4" onClick={clearCart}>Clear Cart</Button>
             <Button className="w-full mt-4">Checkout</Button>
           </div>
         </>

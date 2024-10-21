@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ toggleCart, cart }) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const cartItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartItemCount = cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0;
 
   return (
     <header className="bg-white shadow-sm relative">
