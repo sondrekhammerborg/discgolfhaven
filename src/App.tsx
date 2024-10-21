@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Cart from "./components/Cart";
 import { useState } from "react";
 import { useCart } from "./hooks/useCart";
+import CartPage from "./pages/CartPage";
 
 const queryClient = new QueryClient();
 
@@ -29,15 +30,18 @@ const App = () => {
             <main className="flex-grow container mx-auto px-4 py-8">
               <Routes>
                 <Route path="/" element={<Index addToCart={addToCart} />} />
-              </Routes>
-              {isCartOpen && (
-                <Cart
-                  cart={cart}
-                  removeFromCart={removeFromCart}
-                  updateQuantity={updateQuantity}
-                  clearCart={clearCart}
+                <Route
+                  path="/cart"
+                  element={
+                    <CartPage
+                      cart={cart}
+                      removeFromCart={removeFromCart}
+                      updateQuantity={updateQuantity}
+                      clearCart={clearCart}
+                    />
+                  }
                 />
-              )}
+              </Routes>
             </main>
             <Footer />
           </div>

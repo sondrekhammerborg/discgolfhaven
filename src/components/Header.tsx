@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 import { CartItem } from '../hooks/useCart';
 
 interface HeaderProps {
-  toggleCart: () => void;
   cart: CartItem[];
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleCart, cart }) => {
+const Header: React.FC<HeaderProps> = ({ cart }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const toggleMobileMenu = () => {
@@ -43,14 +42,16 @@ const Header: React.FC<HeaderProps> = ({ toggleCart, cart }) => {
             <Link to="/contact" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Contact</Link>
           </div>
         </nav>
-        <Button variant="ghost" size="icon" aria-label="Shopping Cart" onClick={toggleCart}>
-          <ShoppingCart className="h-6 w-6" />
-          {cartItemCount > 0 && (
-            <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-              {cartItemCount}
-            </span>
-          )}
-        </Button>
+        <Link to="/cart" aria-label="Shopping Cart">
+          <Button variant="ghost" size="icon">
+            <ShoppingCart className="h-6 w-6" />
+            {cartItemCount > 0 && (
+              <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                {cartItemCount}
+              </span>
+            )}
+          </Button>
+        </Link>
       </div>
     </header>
   );
