@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import { useCart } from "./hooks/useCart";
 import CartPage from "./pages/CartPage";
 import ProductsPage from "./pages/ProductsPage";
+import BlogPage from "./pages/BlogPage";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => {
                     />
                   }
                 />
+                <Route path="/blog" element={<BlogPage />} />
               </Routes>
             </main>
             <Footer />

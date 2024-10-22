@@ -71,12 +71,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-soft-gray text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Additional custom styles */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -89,13 +88,11 @@
   border-width: 0;
 }
 
-/* Improve focus styles for better accessibility */
 :focus {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
 
-/* Ensure proper contrast for text */
 .text-gray-600 {
   color: #4B5563;
 }
@@ -104,12 +101,10 @@
   color: #1F2937;
 }
 
-/* Improve link hover states */
 a:hover {
   text-decoration: underline;
 }
 
-/* Responsive font sizes */
 @media (max-width: 640px) {
   h1 {
     font-size: 1.5rem;
