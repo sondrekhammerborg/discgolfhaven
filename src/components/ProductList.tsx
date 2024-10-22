@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ProductItem from './ProductItem';
 import { Product } from '../hooks/useCart';
 
@@ -37,59 +38,23 @@ const products: Product[] = [
 interface ProductListProps {
   addToCart: (product: Product) => void;
   limit?: number;
+  category?: string;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ addToCart, limit }) => {
-  const displayProducts = limit ? products.slice(0, limit) : products;
+const ProductList: React.FC<ProductListProps> = ({ addToCart, limit, category }) => {
+  const filteredProducts = category
+    ? products.filter(product => product.category.toLowerCase() === category.toLowerCase())
+    : products;
+
+  const displayProducts = limit ? filteredProducts.slice(0, limit) : filteredProducts;
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayProducts.map((product) => (
-          <ProductItem key={product.id} product={product} addToCart={addToCart} />
-        ))}
-      </div>
-      
-      {!limit && (
-        <>
-          <h2 className="text-2xl font-bold mt-12 mb-4">All Discs</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="p-2 text-left">Name</th>
-                  <th className="p-2 text-left">Speed</th>
-                  <th className="p-2 text-left">Glide</th>
-                  <th className="p-2 text-left">Turn</th>
-                  <th className="p-2 text-left">Fade</th>
-                  <th className="p-2 text-left">Price</th>
-                  <th className="p-2 text-left">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.filter(product => ['Drivers', 'Mid-Range', 'Putters'].includes(product.category)).map((disc) => (
-                  <tr key={disc.id} className="border-b">
-                    <td className="p-2">{disc.name}</td>
-                    <td className="p-2">{disc.speed}</td>
-                    <td className="p-2">{disc.glide}</td>
-                    <td className="p-2">{disc.turn}</td>
-                    <td className="p-2">{disc.fade}</td>
-                    <td className="p-2">${disc.price.toFixed(2)}</td>
-                    <td className="p-2">
-                      <button 
-                        onClick={() => addToCart(disc)}
-                        className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-                      >
-                        Add to Cart
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {displayProducts.map((product) => (
+        <Link to={`/product/${product.id}`} key={product.id} className="block">
+          <ProductItem product={product} addToCart={addToCart} />
+        </Link>
+      ))}
     </div>
   );
 };

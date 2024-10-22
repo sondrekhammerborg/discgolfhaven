@@ -15,7 +15,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ addToCart }) => {
       <h1 className="text-3xl font-bold mb-8">
         {category ? `${category} Products` : 'All Products'}
       </h1>
-      <ProductList addToCart={addToCart} />
+      <ProductList addToCart={addToCart} category={category} />
     </div>
   );
 };

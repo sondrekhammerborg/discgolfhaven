@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import { useCart } from "./hooks/useCart";
 import CartPage from "./pages/CartPage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductPage from "./pages/ProductPage";
 import BlogPage from "./pages/BlogPage";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => {
                 <Route path="/" element={<Index addToCart={addToCart} />} />
                 <Route path="/products" element={<ProductsPage addToCart={addToCart} />} />
                 <Route path="/products/:category" element={<ProductsPage addToCart={addToCart} />} />
+                <Route path="/product/:id" element={<ProductPage addToCart={addToCart} />} />
                 <Route
                   path="/cart"
                   element={
