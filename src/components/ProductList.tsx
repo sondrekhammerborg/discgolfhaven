@@ -3,27 +3,9 @@ import ProductItem from './ProductItem';
 import { Product } from '../hooks/useCart';
 
 const products: Product[] = [
-  { 
-    id: 1, 
-    name: 'Driver Disc', 
-    price: 14.99, 
-    image: 'https://example.com/driver.jpg',
-    description: 'High-speed disc for maximum distance'
-  },
-  { 
-    id: 2, 
-    name: 'Mid-Range Disc', 
-    price: 12.99, 
-    image: 'https://example.com/midrange.jpg',
-    description: 'Versatile disc for controlled flights'
-  },
-  { 
-    id: 3, 
-    name: 'Putter Disc', 
-    price: 9.99, 
-    image: 'https://example.com/putter.jpg',
-    description: 'Accurate disc for short-range throws'
-  },
+  { id: 1, name: 'Driver Disc', price: 14.99, image: 'https://example.com/driver.jpg' },
+  { id: 2, name: 'Mid-Range Disc', price: 12.99, image: 'https://example.com/midrange.jpg' },
+  { id: 3, name: 'Putter Disc', price: 9.99, image: 'https://example.com/putter.jpg' },
 ];
 
 interface ProductListProps {
