@@ -10,6 +10,7 @@ export interface Product {
   glide?: number;
   turn?: number;
   fade?: number;
+  description: string;
 }
 
 export interface CartItem extends Product {
