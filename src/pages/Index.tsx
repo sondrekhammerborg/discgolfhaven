@@ -1,39 +1,34 @@
 import React from 'react';
-import ProductList from '../components/ProductList';
-import FeaturedProduct from '../components/FeaturedProduct';
-import CustomerReviews from '../components/CustomerReviews';
-import { Product } from '../hooks/useCart';
+import { Link } from 'react-router-dom';
 
-interface IndexProps {
-  addToCart: (product: Product) => void;
-}
-
-const Index: React.FC<IndexProps> = ({ addToCart }) => {
-  const featuredProduct: Product = {
-    id: 0,
-    name: "Pro Disc Golf Driver",
-    price: 24.99,
-    image: "https://example.com/featured-driver.jpg",
-    description: "Our best-selling driver disc, perfect for achieving maximum distance with excellent control."
-  };
-
+const Index: React.FC = () => {
   return (
-    <div className="flex-grow space-y-12">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Welcome to Disc Golf Haven</h1>
-      
-      <section className="bg-pale-green p-6 rounded-lg">
-        <h2 className="text-2xl font-bold mb-4">Featured Product</h2>
-        <FeaturedProduct {...featuredProduct} addToCart={() => addToCart(featuredProduct)} />
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-bold mb-4">Our Products</h2>
-        <ProductList addToCart={addToCart} />
-      </section>
-
-      <section>
-        <CustomerReviews />
-      </section>
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-sage-100 py-4">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <div className="flex items-center">
+            <img src="/logo.svg" alt="Disc Golf Haven Logo" className="h-10 w-10 mr-2" />
+            <span className="text-sage-800 font-semibold">DISC GOLF HAVEN</span>
+          </div>
+          <nav>
+            <ul className="flex space-x-6">
+              {['Home', 'Shop', 'Discdics', 'Courses', 'Blog', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link to={`/${item.toLowerCase()}`} className="text-sage-700 hover:text-sage-900">
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main className="flex-grow bg-hero-pattern bg-cover bg-center">
+        <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-end h-full text-center">
+          <h1 className="text-6xl font-bold text-white mb-4">DISC GOLF HAVEN</h1>
+          <p className="text-2xl text-white">MINIMALIST BACKGROUND STORE</p>
+        </div>
+      </main>
     </div>
   );
 };

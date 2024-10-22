@@ -52,10 +52,20 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // New color palette
-        'soft-gray': '#f0f0f0',
-        'pale-green': '#e0f0e0',
-        'pale-blue': '#e0e0f0',
+        'sage': {
+          100: '#f0f4f0',
+          200: '#d1e0d1',
+          300: '#b3ccb3',
+          400: '#94b894',
+          500: '#76a476',
+          600: '#5c835c',
+          700: '#436243',
+          800: '#2b412b',
+          900: '#142114',
+        },
+      },
+      backgroundImage: {
+        'hero-pattern': "url('/hero-background.jpg')",
       },
       borderRadius: {
         lg: "var(--radius)",
