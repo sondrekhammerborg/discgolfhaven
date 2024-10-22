@@ -5,7 +5,11 @@ export interface Product {
   name: string;
   price: number;
   image: string;
-  description: string; // Add this line
+  category: string;
+  speed?: number;
+  glide?: number;
+  turn?: number;
+  fade?: number;
 }
 
 export interface CartItem extends Product {
