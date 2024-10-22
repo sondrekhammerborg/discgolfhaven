@@ -1,4 +1,3 @@
-<lov-code>
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from '../components/ui/button';
@@ -18,4 +17,52 @@ const products: Product[] = [
   // Putters
   { id: 7, name: 'Aviar Putter', price: 12.99, image: 'https://example.com/aviar.jpg', category: 'Putters', speed: 2, glide: 3, turn: 0, fade: 1 },
   { id: 8, name: 'Judge Putter', price: 13.99, image: 'https://example.com/judge.jpg', category: 'Putters', speed: 2, glide: 4, turn: 0, fade: 1 },
-  { 
+  { id: 9, name: 'Luna Putter', price: 14.99, image: 'https://example.com/luna.jpg', category: 'Putters', speed: 3, glide: 3, turn: 0, fade: 3 },
+];
+
+interface ProductPageProps {
+  addToCart: (product: Product) => void;
+}
+
+const ProductPage: React.FC<ProductPageProps> = ({ addToCart }) => {
+  const { id } = useParams<{ id: string }>();
+  const product = products.find(p => p.id === Number(id));
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-1/2">
+          <img src={product.image} alt={product.name} className="w-full h-auto object-cover rounded-lg shadow-lg" />
+        </div>
+        <div className="md:w-1/2 md:pl-8 mt-4 md:mt-0">
+          <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+          <p className="text-xl mb-4">${product.price.toFixed(2)}</p>
+          <p className="mb-4">Category: {product.category}</p>
+          {product.speed !== undefined && (
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <span className="font-semibold">Speed:</span> {product.speed}
+              </div>
+              <div>
+                <span className="font-semibold">Glide:</span> {product.glide}
+              </div>
+              <div>
+                <span className="font-semibold">Turn:</span> {product.turn}
+              </div>
+              <div>
+                <span className="font-semibold">Fade:</span> {product.fade}
+              </div>
+            </div>
+          )}
+          <Button onClick={() => addToCart(product)}>Add to Cart</Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductPage;
