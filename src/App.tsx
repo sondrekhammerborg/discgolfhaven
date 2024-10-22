@@ -24,7 +24,7 @@ const App = () => {
             <Header cart={cart} />
             <main className="flex-grow container mx-auto px-4 py-8">
               <Routes>
-                <Route path="/" element={<Index addToCart={addToCart} />} />
+                <Route path="/" element={<Index />} />
                 <Route path="/products" element={<ProductsPage />} />
                 <Route path="/products/:category" element={<ProductsPage />} />
                 <Route
