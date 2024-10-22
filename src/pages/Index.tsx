@@ -9,7 +9,7 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ addToCart }) => {
-  const featuredProduct: Product = {
+  const featuredProduct: Product & { description: string } = {
     id: 0,
     name: "Pro Disc Golf Driver",
     price: 24.99,
@@ -18,7 +18,8 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
     speed: 12,
     glide: 5,
     turn: -1,
-    fade: 3
+    fade: 3,
+    description: "Experience unparalleled distance and control with our Pro Disc Golf Driver. Perfect for both beginners and seasoned players."
   };
 
   return (

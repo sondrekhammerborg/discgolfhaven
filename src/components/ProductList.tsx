@@ -18,6 +18,21 @@ const products: Product[] = [
   { id: 7, name: 'Aviar Putter', price: 12.99, image: 'https://example.com/aviar.jpg', category: 'Putters', speed: 2, glide: 3, turn: 0, fade: 1 },
   { id: 8, name: 'Judge Putter', price: 13.99, image: 'https://example.com/judge.jpg', category: 'Putters', speed: 2, glide: 4, turn: 0, fade: 1 },
   { id: 9, name: 'Luna Putter', price: 14.99, image: 'https://example.com/luna.jpg', category: 'Putters', speed: 3, glide: 3, turn: 0, fade: 3 },
+  
+  // Disc Golf Bags
+  { id: 10, name: 'Trooper Backpack', price: 39.99, image: 'https://example.com/trooper.jpg', category: 'Bags' },
+  { id: 11, name: 'Commander Cooler Bag', price: 59.99, image: 'https://example.com/commander.jpg', category: 'Bags' },
+  { id: 12, name: 'Luxury Cart Bag', price: 199.99, image: 'https://example.com/luxury-cart.jpg', category: 'Bags' },
+  
+  // Accessories
+  { id: 13, name: 'Mini Marker Disc', price: 3.99, image: 'https://example.com/mini-marker.jpg', category: 'Accessories' },
+  { id: 14, name: 'Disc Retriever', price: 24.99, image: 'https://example.com/retriever.jpg', category: 'Accessories' },
+  { id: 15, name: 'Towel', price: 9.99, image: 'https://example.com/towel.jpg', category: 'Accessories' },
+  
+  // Snacks
+  { id: 16, name: 'Energy Bar', price: 2.49, image: 'https://example.com/energy-bar.jpg', category: 'Snacks' },
+  { id: 17, name: 'Trail Mix', price: 3.99, image: 'https://example.com/trail-mix.jpg', category: 'Snacks' },
+  { id: 18, name: 'Sports Drink', price: 1.99, image: 'https://example.com/sports-drink.jpg', category: 'Snacks' },
 ];
 
 interface ProductListProps {
