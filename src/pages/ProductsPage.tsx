@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const categories = [
   { id: 1, name: 'Drivers', image: 'https://example.com/drivers.jpg' },
@@ -12,14 +12,22 @@ const categories = [
 ];
 
 const ProductsPage: React.FC = () => {
+  const { category } = useParams<{ category: string }>();
+  
+  const displayCategories = category 
+    ? categories.filter(cat => cat.name.toLowerCase() === category.toLowerCase())
+    : categories;
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Product Categories</h1>
+      <h1 className="text-3xl font-bold mb-8">
+        {category ? `${category} Products` : 'Product Categories'}
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {categories.map((category) => (
+        {displayCategories.map((category) => (
           <Link
             key={category.id}
-            to={`/products/${category.id}`}
+            to={`/products/${category.name.toLowerCase()}`}
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
           >
             <img src={category.image} alt={category.name} className="w-full h-48 object-cover" />

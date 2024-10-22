@@ -25,6 +25,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Index addToCart={addToCart} />} />
                 <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/:category" element={<ProductsPage />} />
                 <Route
                   path="/cart"
                   element={

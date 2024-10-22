@@ -3,6 +3,12 @@ import { ShoppingCart, Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
 import { CartItem } from '../hooks/useCart';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 interface HeaderProps {
   cart: CartItem[];
@@ -16,6 +22,16 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
   };
 
   const cartItemCount = cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0;
+
+  const productCategories = [
+    { name: 'Drivers', path: '/products/drivers' },
+    { name: 'Mid-Range', path: '/products/midrange' },
+    { name: 'Putters', path: '/products/putters' },
+    { name: 'Disc Golf Bags', path: '/products/bags' },
+    { name: 'Minis', path: '/products/minis' },
+    { name: 'Snacks', path: '/products/snacks' },
+    { name: 'Accessories', path: '/products/accessories' },
+  ];
 
   return (
     <header className="bg-white shadow-sm relative">
@@ -37,7 +53,18 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
         } lg:flex flex-col lg:flex-row absolute lg:static left-0 right-0 top-full bg-white lg:bg-transparent shadow-md lg:shadow-none z-10 lg:z-auto`}>
           <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
             <Link to="/" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Home</Link>
-            <Link to="/products" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Products</Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="text-gray-600 hover:text-gray-800">Products</DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {productCategories.map((category) => (
+                  <DropdownMenuItem key={category.name}>
+                    <Link to={category.path} className="w-full" onClick={toggleMobileMenu}>
+                      {category.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Link to="/about" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>About</Link>
             <Link to="/contact" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Contact</Link>
           </div>
