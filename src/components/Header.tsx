@@ -46,7 +46,9 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
-          <h1 className="text-xl font-bold text-gray-800">Disc Golf Haven</h1>
+          <Link to="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
+            Disc Golf Haven
+          </Link>
         </div>
         <nav className={`${
           isMobileMenuOpen ? 'flex' : 'hidden'
