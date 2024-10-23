@@ -1,7 +1,8 @@
 import React from 'react';
-import BlogCard from '@/components/BlogCard';
+import { useParams } from 'react-router-dom';
 import { BlogPost } from '@/types/BlogPost';
 
+// This would typically come from an API
 const blogPosts: BlogPost[] = [
   {
     id: "1",
@@ -32,17 +33,34 @@ const blogPosts: BlogPost[] = [
   }
 ];
 
-const BlogPage = () => {
+const BlogPostPage = () => {
+  const { id } = useParams<{ id: string }>();
+  const post = blogPosts.find(post => post.id === id);
+
+  if (!post) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold">Post not found</h1>
+      </div>
+    );
+  }
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Disc Golf Blog</h1>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {blogPosts.map((post) => (
-          <BlogCard key={post.id} post={post} />
-        ))}
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <img 
+        src={post.imageUrl} 
+        alt={post.title}
+        className="w-full h-64 object-cover rounded-lg mb-8"
+      />
+      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+      <div className="text-muted-foreground mb-8">
+        {post.date} • {post.author}
+      </div>
+      <div className="prose max-w-none">
+        {post.content}
       </div>
     </div>
   );
 };
 
-export default BlogPage;
+export default BlogPostPage;

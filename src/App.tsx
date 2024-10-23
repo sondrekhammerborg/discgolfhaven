@@ -10,6 +10,7 @@ import CartPage from "./pages/CartPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductPage from "./pages/ProductPage";
 import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => {
                   }
                 />
                 <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:id" element={<BlogPostPage />} />
               </Routes>
             </main>
             <Footer />
