@@ -37,20 +37,51 @@ const products: Product[] = [
 
 interface ProductListProps {
   addToCart: (product: Product) => void;
-  limit?: number;
-  category?: string;
+  searchQuery: string;
+  priceRange: [number, number];
+  selectedCategory: string;
+  rating: number;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ addToCart, limit, category }) => {
-  const filteredProducts = category
-    ? products.filter(product => product.category.toLowerCase() === category.toLowerCase())
-    : products;
+const ProductList: React.FC<ProductListProps> = ({
+  addToCart,
+  searchQuery,
+  priceRange,
+  selectedCategory,
+  rating,
+}) => {
+  const filteredProducts = products.filter((product) => {
+    // Search query filter
+    const searchLower = searchQuery.toLowerCase();
+    const matchesSearch = searchQuery === '' ||
+      product.name.toLowerCase().includes(searchLower) ||
+      product.description.toLowerCase().includes(searchLower) ||
+      product.category.toLowerCase().includes(searchLower);
 
-  const displayProducts = limit ? filteredProducts.slice(0, limit) : filteredProducts;
+    // Price range filter
+    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
+
+    // Category filter
+    const matchesCategory = selectedCategory === 'all' || 
+      product.category.toLowerCase() === selectedCategory;
+
+    // Rating filter (assuming products have a rating property)
+    const matchesRating = true; // TODO: Implement when rating system is added
+
+    return matchesSearch && matchesPrice && matchesCategory && matchesRating;
+  });
+
+  if (filteredProducts.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-gray-500">No products found matching your criteria.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {displayProducts.map((product) => (
+      {filteredProducts.map((product) => (
         <Link to={`/product/${product.id}`} key={product.id} className="block">
           <ProductItem product={product} addToCart={addToCart} />
         </Link>

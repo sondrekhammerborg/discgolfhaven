@@ -11,6 +11,7 @@ export interface Product {
   turn?: number;
   fade?: number;
   description: string;
+  rating?: number;
 }
 
 export interface CartItem extends Product {
