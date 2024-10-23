@@ -33,7 +33,14 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
 
       <section>
         <h2 className="text-2xl font-bold mb-4">Featured Discs</h2>
-        <ProductList addToCart={addToCart} limit={3} />
+        <ProductList 
+          addToCart={addToCart} 
+          limit={3}
+          selectedCategory="all"
+          searchQuery=""
+          priceRange={[0, 200]}
+          rating={0}
+        />
       </section>
 
       <section>

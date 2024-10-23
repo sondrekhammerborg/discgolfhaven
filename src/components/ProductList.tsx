@@ -37,18 +37,20 @@ const products: Product[] = [
 
 interface ProductListProps {
   addToCart: (product: Product) => void;
-  searchQuery: string;
-  priceRange: [number, number];
-  selectedCategory: string;
-  rating: number;
+  searchQuery?: string;
+  priceRange?: [number, number];
+  selectedCategory?: string;
+  rating?: number;
+  limit?: number;
 }
 
 const ProductList: React.FC<ProductListProps> = ({
   addToCart,
-  searchQuery,
-  priceRange,
-  selectedCategory,
-  rating,
+  searchQuery = '',
+  priceRange = [0, 200],
+  selectedCategory = 'all',
+  rating = 0,
+  limit,
 }) => {
   const filteredProducts = products.filter((product) => {
     // Search query filter
@@ -56,20 +58,22 @@ const ProductList: React.FC<ProductListProps> = ({
     const matchesSearch = searchQuery === '' ||
       product.name.toLowerCase().includes(searchLower) ||
       product.description.toLowerCase().includes(searchLower) ||
-      product.category.toLowerCase().includes(searchLower);
+      (product.category && product.category.toLowerCase().includes(searchLower));
 
     // Price range filter
     const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
 
     // Category filter
     const matchesCategory = selectedCategory === 'all' || 
-      product.category.toLowerCase() === selectedCategory;
+      (product.category && product.category.toLowerCase() === selectedCategory.toLowerCase());
 
-    // Rating filter (assuming products have a rating property)
-    const matchesRating = true; // TODO: Implement when rating system is added
+    // Rating filter
+    const matchesRating = !product.rating || product.rating >= rating;
 
     return matchesSearch && matchesPrice && matchesCategory && matchesRating;
   });
+
+  const displayProducts = limit ? filteredProducts.slice(0, limit) : filteredProducts;
 
   if (filteredProducts.length === 0) {
     return (
@@ -81,7 +85,7 @@ const ProductList: React.FC<ProductListProps> = ({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {filteredProducts.map((product) => (
+      {displayProducts.map((product) => (
         <Link to={`/product/${product.id}`} key={product.id} className="block">
           <ProductItem product={product} addToCart={addToCart} />
         </Link>
