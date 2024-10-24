@@ -9,7 +9,7 @@ const blogPosts: BlogPost[] = [
     title: "How to Choose the Right Disc for Your Play Style",
     excerpt: "Understanding the different types of discs and how they complement your throwing technique is crucial for improving your game.",
     content: "Lorem ipsum dolor sit amet... [Full article content here]",
-    imageUrl: "https://example.com/disc-selection.jpg",
+    imageUrl: "/discgolfblog1.jpg",
     date: "2024-02-15",
     author: "John Smith"
   },
@@ -18,7 +18,7 @@ const blogPosts: BlogPost[] = [
     title: "Disc Golf Throwing Techniques for Beginners",
     excerpt: "Master the basic throwing techniques that will help you build a strong foundation in disc golf.",
     content: "Lorem ipsum dolor sit amet... [Full article content here]",
-    imageUrl: "https://example.com/throwing-techniques.jpg",
+    imageUrl: "/discgolfblog2.jpg",
     date: "2024-02-10",
     author: "Sarah Johnson"
   },
@@ -27,7 +27,7 @@ const blogPosts: BlogPost[] = [
     title: "Top 5 Disc Golf Courses in the Pacific Northwest",
     excerpt: "Discover the most scenic and challenging disc golf courses that the Pacific Northwest has to offer.",
     content: "Lorem ipsum dolor sit amet... [Full article content here]",
-    imageUrl: "https://example.com/pnw-courses.jpg",
+    imageUrl: "/discgolfblog3.jpg",
     date: "2024-02-05",
     author: "Mike Wilson"
   }
