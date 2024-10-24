@@ -20,21 +20,21 @@ const products: Product[] = [
   { id: 9, name: 'Luna Putter', price: 14.99, image: '/exampledischaven.jpg', category: 'Putters', speed: 3, glide: 3, turn: 0, fade: 3, description: "Developed with pro player Paul McBeth, the Luna is a stable putter that excels in both putting and approach shots." },
   
   // Disc Golf Bags
-  { id: 10, name: 'Trooper Backpack', price: 39.99, image: 'https://example.com/trooper.jpg', category: 'Bags', description: "The Trooper Backpack is perfect for casual rounds. It comfortably holds up to 18 discs and has extra pockets for accessories." },
-  { id: 11, name: 'Commander Cooler Bag', price: 59.99, image: 'https://example.com/commander.jpg', category: 'Bags', description: "Stay refreshed on the course with the Commander Cooler Bag. It holds your discs and keeps your drinks cold for those long tournament days." },
-  { id: 12, name: 'Luxury Cart Bag', price: 199.99, image: 'https://example.com/luxury-cart.jpg', category: 'Bags', description: "The ultimate in disc golf luxury. This cart bag holds over 25 discs, has multiple pockets, and is designed for use with disc golf carts." },
+  { id: 10, name: 'Trooper Backpack', price: 39.99, image: '/discgolfbag.jpg', category: 'Bags', description: "The Trooper Backpack is perfect for casual rounds. It comfortably holds up to 18 discs and has extra pockets for accessories." },
+  { id: 11, name: 'Commander Cooler Bag', price: 59.99, image: '/discgolfbag1.jpg', category: 'Bags', description: "Stay refreshed on the course with the Commander Cooler Bag. It holds your discs and keeps your drinks cold for those long tournament days." },
+  { id: 12, name: 'Luxury Cart Bag', price: 199.99, image: '/discgolfbag2.jpg', category: 'Bags', description: "The ultimate in disc golf luxury. This cart bag holds over 25 discs, has multiple pockets, and is designed for use with disc golf carts." },
   
   // Minis
   { id: 13, name: 'Mini Marker Disc', price: 3.99, image: '/exampledischaven.jpg', category: 'Minis', description: "Official mini marker disc for marking your lie. Available in various colors to match your style." },
   
   // Accessories
-  { id: 14, name: 'Disc Retriever', price: 24.99, image: 'https://example.com/retriever.jpg', category: 'Accessories', description: "Don't let water hazards ruin your game. This extendable disc retriever helps you rescue discs from up to 15 feet away." },
-  { id: 15, name: 'Towel', price: 9.99, image: 'https://example.com/towel.jpg', category: 'Accessories', description: "Keep your discs dry and your hands clean with this microfiber disc golf towel. Features a convenient clip for easy attachment to your bag." },
+  { id: 14, name: 'Disc Retriever', price: 24.99, image: '/discretriever.jpg', category: 'Accessories', description: "Don't let water hazards ruin your game. This extendable disc retriever helps you rescue discs from up to 15 feet away." },
+  { id: 15, name: 'Towel', price: 9.99, image: '/disctowel.jpg', category: 'Accessories', description: "Keep your discs dry and your hands clean with this microfiber disc golf towel. Features a convenient clip for easy attachment to your bag." },
   
   // Snacks
-  { id: 16, name: 'Energy Bar', price: 2.49, image: 'https://example.com/energy-bar.jpg', category: 'Snacks', description: "Fuel your round with these delicious, nutrient-packed energy bars. Perfect for a quick boost between holes." },
-  { id: 17, name: 'Trail Mix', price: 3.99, image: 'https://example.com/trail-mix.jpg', category: 'Snacks', description: "A classic mix of nuts, dried fruits, and chocolate for sustained energy throughout your disc golf adventure." },
-  { id: 18, name: 'Sports Drink', price: 1.99, image: 'https://example.com/sports-drink.jpg', category: 'Snacks', description: "Stay hydrated and replenish electrolytes with this refreshing sports drink. Available in various flavors." },
+  { id: 16, name: 'Energy Bar', price: 2.49, image: '/discbar.jpg', category: 'Snacks', description: "Fuel your round with these delicious, nutrient-packed energy bars. Perfect for a quick boost between holes." },
+  { id: 17, name: 'Trail Mix', price: 3.99, image: '/disctrailmix.jpg', category: 'Snacks', description: "A classic mix of nuts, dried fruits, and chocolate for sustained energy throughout your disc golf adventure." },
+  { id: 18, name: 'Sports Drink', price: 1.99, image: '/discsportdrink.jpg', category: 'Snacks', description: "Stay hydrated and replenish electrolytes with this refreshing sports drink. Available in various flavors." },
 ];
 
 interface ProductListProps {
