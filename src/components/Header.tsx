@@ -94,6 +94,7 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
+                <Link to="/blog" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Blog</Link>
                 <Link to="/about" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>About</Link>
                 <Link to="/contact" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Contact</Link>
               </div>
