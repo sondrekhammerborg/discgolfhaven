@@ -12,15 +12,15 @@ interface IndexProps {
 const Index: React.FC<IndexProps> = ({ addToCart }) => {
   const featuredProduct: Product & { description: string } = {
     id: 0,
-    name: "Pro Disc Golf Driver",
+    name: "Premium Distance Driver",
     price: 24.99,
-    image: "https://example.com/featured-driver.jpg",
+    image: "/premiumdisc.jpg",
     category: "Drivers",
     speed: 12,
     glide: 5,
     turn: -1,
     fade: 3,
-    description: "Experience unparalleled distance and control with our Pro Disc Golf Driver. Perfect for both beginners and seasoned players."
+    description: "Experience unparalleled distance and control with our Premium Distance Driver. Perfect for both beginners and seasoned players."
   };
 
   return (
@@ -32,7 +32,7 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
       </section>
 
       <section className="bg-gray-100 p-6 rounded-lg">
-        <h2 className="text-2xl font-bold mb-4">Featured Product</h2>
+        <h2 className="text-2xl font-bold mb-4">Bestseller</h2>
         <FeaturedProduct {...featuredProduct} addToCart={() => addToCart(featuredProduct)} />
       </section>
 
