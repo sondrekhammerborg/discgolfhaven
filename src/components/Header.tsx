@@ -78,16 +78,16 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
             <nav className={`${
               isMobileMenuOpen ? 'flex' : 'hidden'
             } lg:flex flex-col lg:flex-row absolute lg:static left-0 right-0 top-full bg-white lg:bg-transparent shadow-md lg:shadow-none z-10 lg:z-auto`}>
-              <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
+              <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
                 <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
                 <NavigationMenu>
                   <NavigationMenuList>
-                    <NavigationMenuItem>
-                      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                    <NavigationMenuItem className="list-none">
+                      <NavigationMenuTrigger className="h-9 px-4 py-2">Products</NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4">
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1">
                           {productCategories.map((category) => (
-                            <li key={category.path}>
+                            <li key={category.path} className="list-none">
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={category.path}

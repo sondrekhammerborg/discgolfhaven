@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import ProductList from '../components/ProductList';
 import SearchFilters from '../components/SearchFilters';
 import { Product } from '../hooks/useCart';
@@ -12,12 +12,17 @@ interface ProductsPageProps {
 
 const ProductsPage: React.FC<ProductsPageProps> = ({ addToCart }) => {
   const { category } = useParams<{ category: string }>();
+  const location = useLocation();
   
-  // Search and filter states
   const [searchQuery, setSearchQuery] = useState('');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 200]);
-  const [selectedCategory, setSelectedCategory] = useState(category?.toLowerCase() || 'all');
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [rating, setRating] = useState(0);
+
+  // Update selected category when URL changes
+  useEffect(() => {
+    setSelectedCategory(category?.toLowerCase() || 'all');
+  }, [category, location.pathname]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -25,7 +30,6 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ addToCart }) => {
         {category ? `${category} Products` : 'All Products'}
       </h1>
 
-      {/* Search Bar */}
       <div className="relative mb-8">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
         <Input
