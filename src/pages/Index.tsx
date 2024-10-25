@@ -2,6 +2,7 @@ import React from 'react';
 import ProductList from '../components/ProductList';
 import FeaturedProduct from '../components/FeaturedProduct';
 import CustomerReviews from '../components/CustomerReviews';
+import ImageCarousel from '../components/ImageCarousel';
 import { Product } from '../hooks/useCart';
 
 interface IndexProps {
@@ -26,6 +27,10 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
     <div className="flex-grow space-y-12">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Welcome to Disc Golf Haven</h1>
       
+      <section className="mb-12 px-4 md:px-0">
+        <ImageCarousel />
+      </section>
+
       <section className="bg-gray-100 p-6 rounded-lg">
         <h2 className="text-2xl font-bold mb-4">Featured Product</h2>
         <FeaturedProduct {...featuredProduct} addToCart={() => addToCart(featuredProduct)} />
