@@ -49,17 +49,21 @@ const ProductPage: React.FC<ProductPageProps> = ({ addToCart }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/2">
-          <img src={product.image} alt={product.name} className="w-full h-auto object-cover rounded-lg shadow-lg" />
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
+          />
         </div>
-        <div className="md:w-1/2 md:pl-8 mt-4 md:mt-0">
+        <div className="md:w-1/2">
           <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-          <p className="text-xl mb-4">${product.price.toFixed(2)}</p>
+          <p className="text-2xl font-semibold mb-4">${product.price.toFixed(2)}</p>
           <p className="mb-4">Category: {product.category}</p>
-          <p className="mb-4">{product.description}</p>
+          <p className="mb-6 text-gray-600">{product.description}</p>
           {product.speed !== undefined && (
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <span className="font-semibold">Speed:</span> {product.speed}
               </div>
@@ -74,7 +78,12 @@ const ProductPage: React.FC<ProductPageProps> = ({ addToCart }) => {
               </div>
             </div>
           )}
-          <Button onClick={() => addToCart(product)}>Add to Cart</Button>
+          <Button 
+            onClick={() => addToCart(product)}
+            className="w-full md:w-auto"
+          >
+            Add to Cart
+          </Button>
         </div>
       </div>
     </div>

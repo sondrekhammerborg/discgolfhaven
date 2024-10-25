@@ -5,11 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CartItem } from '../hooks/useCart';
 import { Input } from './ui/input';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "./ui/navigation-menu";
 
 interface HeaderProps {
   cart: CartItem[];
@@ -19,10 +21,6 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +32,7 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
   const cartItemCount = cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0;
 
   const productCategories = [
+    { name: 'All Products', path: '/products' },
     { name: 'Drivers', path: '/products/drivers' },
     { name: 'Mid-Range', path: '/products/midrange' },
     { name: 'Putters', path: '/products/putters' },
@@ -53,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
               size="icon" 
               className="lg:hidden z-20" 
               aria-label="Menu"
-              onClick={toggleMobileMenu}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -62,7 +61,6 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
             </Link>
           </div>
 
-          {/* Search Bar */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-4">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -81,22 +79,33 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
               isMobileMenuOpen ? 'flex' : 'hidden'
             } lg:flex flex-col lg:flex-row absolute lg:static left-0 right-0 top-full bg-white lg:bg-transparent shadow-md lg:shadow-none z-10 lg:z-auto`}>
               <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
-                <Link to="/" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Home</Link>
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="text-gray-600 hover:text-gray-800">Products</DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    {productCategories.map((category) => (
-                      <DropdownMenuItem key={category.name}>
-                        <Link to={category.path} className="w-full" onClick={toggleMobileMenu}>
-                          {category.name}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <Link to="/blog" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Blog</Link>
-                <Link to="/about" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>About</Link>
-                <Link to="/contact" className="text-gray-600 hover:text-gray-800" onClick={toggleMobileMenu}>Contact</Link>
+                <Link to="/" className="text-gray-600 hover:text-gray-800">Home</Link>
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4">
+                          {productCategories.map((category) => (
+                            <li key={category.path}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  to={category.path}
+                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                >
+                                  {category.name}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+                <Link to="/blog" className="text-gray-600 hover:text-gray-800">Blog</Link>
+                <Link to="/about" className="text-gray-600 hover:text-gray-800">About</Link>
+                <Link to="/contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
               </div>
             </nav>
             <Link to="/cart" aria-label="Shopping Cart">
@@ -112,7 +121,6 @@ const Header: React.FC<HeaderProps> = ({ cart }) => {
           </div>
         </div>
 
-        {/* Mobile Search Bar */}
         <form onSubmit={handleSearch} className="mt-4 md:hidden">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
