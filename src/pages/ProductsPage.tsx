@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import ProductList from '../components/ProductList';
 import SearchFilters from '../components/SearchFilters';
 import { Product } from '../hooks/useCart';
 import { Input } from '../components/ui/input';
 import { Search } from 'lucide-react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 
 interface ProductsPageProps {
   addToCart: (product: Product) => void;
@@ -26,7 +19,9 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ addToCart }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [rating, setRating] = useState(0);
 
+  // Update selected category when URL changes
   useEffect(() => {
+    // Map URL category to match the product data categories
     const categoryMap: { [key: string]: string } = {
       'midrange': 'Mid-Range',
       'drivers': 'Drivers',
@@ -41,28 +36,6 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ addToCart }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumb className="mb-6">
-        <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        {category ? (
-          <>
-            <BreadcrumbItem>
-              <BreadcrumbLink as={Link} to="/products">Products</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{category}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </>
-        ) : (
-          <BreadcrumbItem>
-            <BreadcrumbPage>Products</BreadcrumbPage>
-          </BreadcrumbItem>
-        )}
-      </Breadcrumb>
-
       <h1 className="text-3xl font-bold mb-8">
         {category ? `${category} Products` : 'All Products'}
       </h1>

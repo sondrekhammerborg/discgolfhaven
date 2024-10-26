@@ -1,14 +1,7 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Product } from '../hooks/useCart';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 
 const products: Product[] = [
   // Drivers
@@ -56,30 +49,6 @@ const ProductPage: React.FC<ProductPageProps> = ({ addToCart }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumb className="mb-6">
-        <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/">Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/products">Products</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        {product.category && (
-          <>
-            <BreadcrumbItem>
-              <BreadcrumbLink as={Link} to={`/products/${product.category.toLowerCase()}`}>
-                {product.category}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-          </>
-        )}
-        <BreadcrumbItem>
-          <BreadcrumbPage>{product.name}</BreadcrumbPage>
-        </BreadcrumbItem>
-      </Breadcrumb>
-
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/2">
           <img 
