@@ -36,24 +36,14 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
             alt="Disc Golf Course" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40" /> {/* Overlay for better text visibility */}
         </div>
-        <div className="relative container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-2xl text-white">
-            <h1 className="text-5xl font-bold mb-4">
-              Elevate Your Disc Golf Game
-            </h1>
-            <p className="text-xl mb-8">
-              Discover premium discs and gear for players of all skill levels. 
-              Join our community of passionate disc golfers.
-            </p>
-            <Link to="/products">
-              <Button size="lg" className="group">
-                Shop Now
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </div>
+        <div className="absolute bottom-8 left-8">
+          <Link to="/products">
+            <Button size="lg" className="group bg-white/90 hover:bg-white text-black">
+              Shop Now
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
         </div>
       </div>
 
