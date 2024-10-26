@@ -12,7 +12,6 @@ L.Icon.Default.mergeOptions({
 });
 
 const AboutPage: React.FC = () => {
-  // Example coordinates (will be replaced with actual store location)
   const position: [number, number] = [40.7128, -74.0060];
 
   return (
@@ -44,15 +43,15 @@ const AboutPage: React.FC = () => {
         
         <div className="h-[400px] rounded-lg overflow-hidden shadow-lg">
           <MapContainer 
-            className="h-full w-full"
-            center={position as L.LatLngExpression}
+            style={{ height: '100%', width: '100%' }}
+            center={position}
             zoom={13} 
           >
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            <Marker position={position as L.LatLngExpression}>
+            <Marker position={position}>
               <Popup>
                 Disc Golf Haven <br /> Store location coming soon!
               </Popup>

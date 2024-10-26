@@ -13,6 +13,7 @@ import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import TermsPage from "./pages/TermsPage";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => {
                 <Route path="/blog/:id" element={<BlogPostPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/terms" element={<TermsPage />} />
               </Routes>
             </main>
             <Footer />
