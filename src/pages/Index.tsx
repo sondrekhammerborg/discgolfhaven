@@ -59,7 +59,7 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
       </section>
 
       {/* Featured Discs Section */}
-      <section>
+      <section className="mb-16">
         <h2 className="text-2xl font-bold mb-4">Featured Discs</h2>
         <ProductList 
           addToCart={addToCart} 
