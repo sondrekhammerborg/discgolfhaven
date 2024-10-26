@@ -21,7 +21,17 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ addToCart }) => {
 
   // Update selected category when URL changes
   useEffect(() => {
-    setSelectedCategory(category?.toLowerCase() || 'all');
+    // Map URL category to match the product data categories
+    const categoryMap: { [key: string]: string } = {
+      'midrange': 'Mid-Range',
+      'drivers': 'Drivers',
+      'putters': 'Putters',
+      'bags': 'Bags',
+      'accessories': 'Accessories',
+      'snacks': 'Snacks'
+    };
+    
+    setSelectedCategory(category ? (categoryMap[category.toLowerCase()] || category.toLowerCase()) : 'all');
   }, [category, location.pathname]);
 
   return (
