@@ -42,11 +42,7 @@ const products: Product[] = [
   { id: 18, name: 'Sports Drink', price: 1.99, image: '/discsportdrink.jpg', category: 'Snacks', description: "Stay hydrated and replenish electrolytes with this refreshing sports drink. Available in various flavors." },
 ];
 
-interface ProductPageProps {
-  addToCart: (product: Product) => void;
-}
-
-const ProductPage: React.FC<ProductPageProps> = ({ addToCart }) => {
+const ProductPage: React.FC<{ addToCart: (product: Product) => void }> = ({ addToCart }) => {
   const { id } = useParams<{ id: string }>();
   const product = products.find(p => p.id === Number(id));
 
@@ -58,19 +54,19 @@ const ProductPage: React.FC<ProductPageProps> = ({ addToCart }) => {
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb className="mb-6">
         <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/">Home</BreadcrumbLink>
+          <Link to="/">Home</Link>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/products">Products</BreadcrumbLink>
+          <Link to="/products">Products</Link>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         {product.category && (
           <>
             <BreadcrumbItem>
-              <BreadcrumbLink as={Link} to={`/products/${product.category.toLowerCase()}`}>
+              <Link to={`/products/${product.category.toLowerCase()}`}>
                 {product.category}
-              </BreadcrumbLink>
+              </Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
           </>

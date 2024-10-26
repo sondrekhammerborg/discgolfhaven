@@ -43,9 +43,9 @@ const AboutPage: React.FC = () => {
         
         <div className="h-[400px] rounded-lg overflow-hidden shadow-lg">
           <MapContainer 
-            style={{ height: '100%', width: '100%' }}
-            center={position}
-            zoom={13} 
+            className="h-full w-full"
+            defaultCenter={position}
+            defaultZoom={13}
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

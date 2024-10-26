@@ -43,13 +43,13 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ addToCart }) => {
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb className="mb-6">
         <BreadcrumbItem>
-          <BreadcrumbLink as={Link} to="/">Home</BreadcrumbLink>
+          <Link to="/">Home</Link>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         {category ? (
           <>
             <BreadcrumbItem>
-              <BreadcrumbLink as={Link} to="/products">Products</BreadcrumbLink>
+              <Link to="/products">Products</Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
