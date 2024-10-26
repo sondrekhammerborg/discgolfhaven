@@ -3,6 +3,9 @@ import ProductList from '../components/ProductList';
 import FeaturedProduct from '../components/FeaturedProduct';
 import CustomerReviews from '../components/CustomerReviews';
 import ImageCarousel from '../components/ImageCarousel';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Product } from '../hooks/useCart';
 
 interface IndexProps {
@@ -24,18 +27,48 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
   };
 
   return (
-    <div className="flex-grow space-y-12">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8">Welcome to Disc Golf Haven</h1>
-      
+    <div className="flex-grow">
+      {/* Hero Section */}
+      <div className="relative h-[600px] mb-16">
+        <div className="absolute inset-0">
+          <img 
+            src="/heropicdisc.jpg" 
+            alt="Disc Golf Course" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40" /> {/* Overlay for better text visibility */}
+        </div>
+        <div className="relative container mx-auto px-4 h-full flex items-center">
+          <div className="max-w-2xl text-white">
+            <h1 className="text-5xl font-bold mb-4">
+              Elevate Your Disc Golf Game
+            </h1>
+            <p className="text-xl mb-8">
+              Discover premium discs and gear for players of all skill levels. 
+              Join our community of passionate disc golfers.
+            </p>
+            <Link to="/products">
+              <Button size="lg" className="group">
+                Shop Now
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Carousel Section */}
       <section className="mb-12 px-4 md:px-0">
         <ImageCarousel />
       </section>
 
+      {/* Featured Product Section */}
       <section className="bg-gray-100 p-6 rounded-lg">
         <h2 className="text-2xl font-bold mb-4">Bestseller</h2>
         <FeaturedProduct {...featuredProduct} addToCart={() => addToCart(featuredProduct)} />
       </section>
 
+      {/* Featured Discs Section */}
       <section>
         <h2 className="text-2xl font-bold mb-4">Featured Discs</h2>
         <ProductList 
@@ -48,6 +81,7 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
         />
       </section>
 
+      {/* Customer Reviews Section */}
       <section>
         <CustomerReviews />
       </section>
