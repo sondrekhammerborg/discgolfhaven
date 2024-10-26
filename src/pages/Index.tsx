@@ -32,7 +32,7 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
       <div className="relative h-[300px] md:h-[400px] lg:h-[600px] mb-8 md:mb-16">
         <div className="absolute inset-0">
           <img 
-            src="/discgolfblog1.jpg" 
+            src="/heropicdisc.jpg" 
             alt="Disc Golf Course" 
             className="w-full h-full object-cover object-center"
           />
@@ -53,7 +53,7 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
       </section>
 
       {/* Featured Product Section */}
-      <section className="bg-gray-100 p-6 rounded-lg mb-16">
+      <section className="bg-gray-100 p-6 rounded-lg">
         <h2 className="text-2xl font-bold mb-4">Bestseller</h2>
         <FeaturedProduct {...featuredProduct} addToCart={() => addToCart(featuredProduct)} />
       </section>
