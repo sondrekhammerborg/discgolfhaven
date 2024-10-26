@@ -29,15 +29,15 @@ const Index: React.FC<IndexProps> = ({ addToCart }) => {
   return (
     <div className="flex-grow">
       {/* Hero Section */}
-      <div className="relative h-[600px] mb-16">
+      <div className="relative h-[300px] md:h-[400px] lg:h-[600px] mb-8 md:mb-16">
         <div className="absolute inset-0">
           <img 
             src="/heropicdisc.jpg" 
             alt="Disc Golf Course" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
         </div>
-        <div className="absolute bottom-8 left-8">
+        <div className="absolute bottom-4 md:bottom-8 left-4 md:left-8">
           <Link to="/products">
             <Button size="lg" className="group bg-white/90 hover:bg-white text-black">
               Shop Now
